@@ -35,7 +35,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #For authentication
 gem 'devise'
 
-gem 'rails_cropit', '~> 0.1.0'
+# facebook authentication.
+gem 'omniauth-facebook'
+
+gem 'rails_cropit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

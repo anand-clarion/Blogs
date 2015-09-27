@@ -7,8 +7,16 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
+	<div class="container">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, class: "alert alert-info" %>
+    <% end %>
+    <% if current_user %>
+      Signed in as<strong><%= current_user.name.capitalize %></strong>!
+      <%= link_to "Sign out", destroy_user_session_path, method: 'delete',class: "btn btn-xs btn-danger" %>
+    <% else %>
+      <%= link_to "Sign in with Facebook",  user_omniauth_authorize_path(:facebook), id: "sign_in", class: "btn btn-xs btn-info"%>
+    <% end %>
 	<%= yield %>
 
 </body>
